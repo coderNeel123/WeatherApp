@@ -43,10 +43,10 @@ class ViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegate, 
         getLocation()
         backgroundTime()
 
-
         
     }
 
+    
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
@@ -101,6 +101,13 @@ class ViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegate, 
         cityName.text = cityNameValue
             if ((searchBar.text?.containsString(" ")) != nil) {
                 let newValue = searchBar.text?.stringByReplacingOccurrencesOfString(" ", withString: "")
+                newValue?.lowercaseString
+                weather = Weather(cityName: newValue)
+                cityNameValue = searchBar.text
+
+            }
+            else {
+                let newValue = searchBar.text
                 newValue?.lowercaseString
                 weather = Weather(cityName: newValue)
                 cityNameValue = searchBar.text
